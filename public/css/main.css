@@ -1,4 +1,4 @@
-/********* Fonts **********/
+ /********* Fonts **********/
 
 @font-face {
   font-family: 'Roboto';
@@ -34,10 +34,7 @@ p {
 	margin: 8px 0 0 0;
 }
 
-.container p {
-	text-align: center;
-	padding: 0;
-}
+
 
 /****** Header Styling ******/
 
@@ -75,6 +72,10 @@ header a ~ p {
 	font-weight: 400;
 }
 
+.hide {
+   visibility: hidden;
+} 
+
 /****** Login Styling ******/
 
 .login {
@@ -83,8 +84,8 @@ header a ~ p {
 }
 
 #login-btn {
-	width: 225px;
-	padding: 7px 5px;
+	width: 200px;
+	padding: 2px 2px;
 }
 
 .btn p {

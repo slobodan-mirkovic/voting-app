@@ -15,10 +15,31 @@ module.exports = function (app, passport) {
 
 	var clickHandler = new ClickHandler();
 
+	// app.route('/')
+	// 	.get(isLoggedIn, function (req, res) {
+	// 		res.sendFile(path + '/public/index.html');
+	// 	});
+		
 	app.route('/')
+		.get(clickHandler.getIndex);
+		
+	app.route('/newpoll')
 		.get(isLoggedIn, function (req, res) {
-			res.sendFile(path + '/public/index.html');
+			res.sendFile(path + '/public/newpoll.html');
 		});
+		
+	app.route('/api/newpoll')
+		.post(isLoggedIn, clickHandler.addNewPoll);
+		
+	app.route('/polls')
+		.get(clickHandler.getPolls);
+		
+    app.route('/poll/delete/:id')
+       .get(clickHandler.deletePoll);
+		
+    app.route('/poll/:id')
+       .get(clickHandler.getPoll)
+       .post(clickHandler.addPollOption);
 
 	app.route('/login')
 		.get(function (req, res) {
@@ -28,7 +49,7 @@ module.exports = function (app, passport) {
 	app.route('/logout')
 		.get(function (req, res) {
 			req.logout();
-			res.redirect('/login');
+			res.redirect('/');
 		});
 
 	app.route('/profile')
